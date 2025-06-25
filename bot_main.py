@@ -40,7 +40,7 @@ async def ask_gpt_assistant(message: str) -> str:
             )
             if status.status == "completed":
                 break
-            time.sleep(1)
+            await asyncio.sleep(1)
         messages = openai.beta.threads.messages.list(thread_id=thread.id)
         for msg in reversed(messages.data):
             if msg.role == "assistant":
